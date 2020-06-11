@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">TokenApp</string>
+    <string name="app_name">Token Net</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="name">Name</string>
+    <string name="profession">Profession</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="already_have_a_account">Already have a account?</string>
 </resources>

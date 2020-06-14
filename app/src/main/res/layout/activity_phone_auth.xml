@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".PhoneAuth">
+
+
+    <EditText
+        android:id="@+id/verify_otp_activity"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_edittext_register"
+        android:ems="10"
+        android:hint="@string/otp"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:textColor="#00ACC1"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/verify_mobile_text_activity"
+        app:layout_constraintStart_toStartOf="@+id/verify_mobile_text_activity"
+        app:layout_constraintTop_toBottomOf="@+id/verify_mobile_text_activity"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/verify_mobile_text_activity"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="250dp"
+        android:background="@drawable/rounded_edittext_register"
+        android:ems="10"
+        android:hint="Mobile"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:textColor="#00ACC1"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/verify_button"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_login"
+        android:text="@string/verify"
+        android:textColor="#0097A7"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/verify_otp_activity"
+        app:layout_constraintStart_toStartOf="@+id/verify_otp_activity"
+        app:layout_constraintTop_toBottomOf="@+id/verify_otp_activity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

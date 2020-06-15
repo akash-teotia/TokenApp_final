@@ -69,9 +69,9 @@ else {
 
             db.collection("User").document(mobile).set(user,SetOptions.merge())
 
+            startActivity(Intent(this, PhoneAuth::class.java))
 
         }
-        startActivity(Intent(this, PhoneAuth::class.java))
 
         /* if (email.isEmpty()) {
             email_activity_register.error = "Please enter valid email"

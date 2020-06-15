@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_phone_auth.*
 import java.util.concurrent.TimeUnit
 
 class PhoneAuth : AppCompatActivity() {
+
     lateinit var auth: FirebaseAuth
     lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
@@ -25,6 +26,7 @@ class PhoneAuth : AppCompatActivity() {
     private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_auth)
         mobile = findViewById(R.id.verify_mobile_text_activity)

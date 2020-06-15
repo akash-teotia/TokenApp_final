@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var password: EditText
     var db = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         profession = findViewById(R.id.profession_activity_register)

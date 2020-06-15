@@ -5,179 +5,187 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/bg2">
-       <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-              <LinearLayout
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                      android:orientation="vertical">
+    android:background="@mipmap/bg2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:baselineAligned="false"
+            android:gravity="center">
 
 
-                      <!-- app:layout_constraintEnd_toEndOf="parent"
-                          app:layout_constraintStart_toStartOf="parent"
-                          app:layout_constraintTop_toTopOf="parent"-->
 
 
-                  <ImageView
-                      android:id="@+id/imageView2"
-                      android:layout_width="match_parent"
-                      android:layout_height="160dp"
-                      android:layout_marginTop="40dp"
-                      android:contentDescription="@string/profile_picture"
-                      app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
-                      <EditText
-                          android:id="@+id/profession_activity_register"
-                          android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:layout_marginStart="40dp"
-                          android:layout_marginTop="40dp"
-                          android:layout_marginEnd="40dp"
-                          android:background="@drawable/rounded_edittext_register"
-                          android:ems="10"
-                          android:hint="@string/profession"
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/profile_picture"
+                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
-                          android:importantForAutofill="no"
-                          android:inputType="text"
-                          android:padding="10dp"
-                          android:textColor="#00ACC1"
-                          android:textStyle="bold"
-                          android:visibility="visible"
-                          app:layout_constraintEnd_toEndOf="parent"
-                          app:layout_constraintHorizontal_bias="0.0"
-                          app:layout_constraintStart_toStartOf="parent"
-                          app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            <EditText
+                android:id="@+id/profession_activity_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:hint="@string/profession"
 
-                      <EditText
-                          android:id="@+id/name_activity_register"
-                          android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:layout_marginLeft="40dp"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginRight="40dp"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-                          android:background="@drawable/rounded_edittext_register"
-                          android:ems="10"
-                          android:hint="@string/name"
-                          android:importantForAutofill="no"
-                          android:inputType="text"
-                          android:padding="10dp"
-                          android:textColor="#00ACC1"
-                          android:textStyle="bold"
-                          android:visibility="visible"
-                          app:layout_constraintEnd_toEndOf="@id/profession_activity_register"
-                          app:layout_constraintHorizontal_bias="0.0"
-                          app:layout_constraintStart_toStartOf="@id/profession_activity_register"
-                          app:layout_constraintTop_toBottomOf="@id/profession_activity_register" />
+            <EditText
+                android:id="@+id/name_activity_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="32dp"
 
-                      <EditText
-                          android:id="@+id/mobile_text_activity_register"
-                          android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:layout_marginLeft="40dp"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginRight="40dp"
-                          android:background="@drawable/rounded_edittext_register"
-                          android:ems="10"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:hint="@string/name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@id/profession_activity_register"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/profession_activity_register"
+                app:layout_constraintTop_toBottomOf="@id/profession_activity_register" />
 
-                          android:hint="@string/mobile_number"
-                          android:importantForAutofill="no"
-                          android:inputType="phone"
-                          android:padding="10dp"
-                          android:textColor="#00ACC1"
-                          android:textStyle="bold"
-                          android:visibility="visible"
-                          app:layout_constraintEnd_toEndOf="@+id/name_activity_register"
-                          app:layout_constraintHorizontal_bias="0.0"
-                          app:layout_constraintStart_toStartOf="@+id/name_activity_register"
-                          app:layout_constraintTop_toBottomOf="@+id/name_activity_register"
-                          tools:visibility="visible" />
+            <EditText
+                android:id="@+id/mobile_text_activity_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
 
-                      <EditText
-                          android:id="@+id/email_activity_register"
-                          android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:layout_marginLeft="40dp"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginRight="40dp"
-                          android:background="@drawable/rounded_edittext_register"
-                          android:ems="10"
-                          android:hint="@string/email"
-                          android:importantForAutofill="no"
-                          android:inputType="textEmailAddress"
-                          android:padding="10dp"
-                          android:textColor="#00ACC1"
-                          android:textStyle="bold"
-                          android:visibility="visible"
-                          app:layout_constraintEnd_toEndOf="@+id/mobile_text_activity_register"
-                          app:layout_constraintHorizontal_bias="0.0"
-                          app:layout_constraintStart_toStartOf="@+id/mobile_text_activity_register"
-                          app:layout_constraintTop_toBottomOf="@+id/mobile_text_activity_register"
-                          tools:visibility="visible" />
+                android:hint="@string/mobile_number"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/name_activity_register"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/name_activity_register"
+                app:layout_constraintTop_toBottomOf="@+id/name_activity_register"
+                tools:visibility="visible" />
 
-                      <EditText
-                          android:id="@+id/password_activity_register"
-                          android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:layout_marginLeft="40dp"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginRight="40dp"
-                          android:background="@drawable/rounded_edittext_register"
-                          android:ems="10"
-                          android:hint="@string/password"
-                          android:importantForAutofill="no"
-                          android:inputType="textPassword"
-                          android:padding="10dp"
-                          android:textColor="#00ACC1"
+            <EditText
+                android:id="@+id/email_activity_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:hint="@string/email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/mobile_text_activity_register"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/mobile_text_activity_register"
+                app:layout_constraintTop_toBottomOf="@+id/mobile_text_activity_register"
+                tools:visibility="visible" />
 
-                          android:textStyle="bold"
-                          android:visibility="visible"
-                          app:layout_constraintEnd_toEndOf="@+id/email_activity_register"
-                          app:layout_constraintHorizontal_bias="0.0"
-                          app:layout_constraintStart_toStartOf="@+id/email_activity_register"
-                          app:layout_constraintTop_toBottomOf="@+id/email_activity_register"
-                          tools:visibility="visible" />
+            <EditText
+                android:id="@+id/password_activity_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
 
-
-                      <Button
-                          android:id="@+id/button_register"
-                          android:layout_width="150dp"
-                          android:layout_height="50dp"
-                          android:layout_marginLeft="120dp"
-                          android:layout_marginTop="30dp"
-                          android:background="@drawable/button_login"
-                          android:text="@string/register"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/email_activity_register"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/email_activity_register"
+                app:layout_constraintTop_toBottomOf="@+id/email_activity_register"
+                tools:visibility="visible" />
 
 
-                          android:textColor="#0097A7"
-                          android:textSize="16sp"
-                          android:textStyle="bold"
-                          app:layout_constraintEnd_toEndOf="@+id/password_activity_register"
-                          app:layout_constraintHorizontal_bias="0.498"
-                          app:layout_constraintStart_toStartOf="@+id/password_activity_register"
-                          app:layout_constraintTop_toBottomOf="@+id/password_activity_register" />
-
-                  <TextView
-                      android:id="@+id/already_have_account"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="110dp"
-                      android:layout_marginTop="20dp"
-                      android:text="@string/already_have_a_account"
-                      android:textColor="#00ACC1"
-
-                      android:textSize="16sp"
-                      android:textStyle="bold"
-                      app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toBottomOf="@+id/button_register" />
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
 
 
-              </LinearLayout>
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_login"
+                android:text="@string/register"
+                android:textColor="#0097A7"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/password_activity_register"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="@+id/password_activity_register"
+                app:layout_constraintTop_toBottomOf="@+id/password_activity_register" />
 
-       </ScrollView>
+            <TextView
+                android:id="@+id/already_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/already_have_a_account"
+                android:textAlignment="textEnd"
+                android:textColor="#00ACC1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_register" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

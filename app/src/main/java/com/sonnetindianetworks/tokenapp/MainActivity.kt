@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         button_register.setOnClickListener {
             signUpUser()
-            startActivity(Intent(this, PhoneAuth::class.java))
         }
 
     }
@@ -52,8 +53,23 @@ db  = FirebaseFirestore.getInstance()
         val name = name.text.toString().trim()
         val mobile = mobile.text.toString()
 
-        val  user = User(name,profession,mobile.toInt(),email, password)
-        db.collection("User").document("Org").set(user)
+        if(email.isEmpty() || password.isEmpty() || profession.isEmpty()|| name.isEmpty()||mobile.isEmpty()){
+
+            Toast.makeText(this,"Enter Valid Details", Toast.LENGTH_SHORT).show()
+        }
+else {
+
+
+            val user = User(name, profession, mobile.toInt(), email, password)
+
+
+
+
+            db.collection("User").document(mobile).set(user,SetOptions.merge())
+
+
+        }
+        startActivity(Intent(this, PhoneAuth::class.java))
 
         /* if (email.isEmpty()) {
             email_activity_register.error = "Please enter valid email"

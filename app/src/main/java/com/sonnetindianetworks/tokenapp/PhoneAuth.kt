@@ -28,6 +28,7 @@ class PhoneAuth : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_auth)
         mobile = findViewById(R.id.verify_mobile_text_activity)
+
         auth = FirebaseAuth.getInstance()
 
         verify_button.setOnClickListener {
@@ -76,7 +77,7 @@ class PhoneAuth : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         if (auth.currentUser == null) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -85,13 +86,14 @@ class PhoneAuth : AppCompatActivity() {
         }
 
 
-    }
+    }*/
+    val mobileTest = "+61452330164"
 
     private fun verify() {
         verificationCallbacks()
-        val mobile = mobile.toString()
+     //   val mobile = mobile.toString()
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            mobile, // Phone number to verify
+            mobileTest, // Phone number to verify
             60, // Timeout duration
             TimeUnit.SECONDS, // Unit of timeout
             this, // Activity (for callback binding)

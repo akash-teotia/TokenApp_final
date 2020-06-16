@@ -42,26 +42,43 @@ class PhoneAuth : AppCompatActivity() {
         setContentView(R.layout.activity_phone_auth)
         mobile = findViewById(R.id.verify_mobile_text_activity)
         otp = findViewById(R.id.verify_otp_activity)
+        auth = FirebaseAuth.getInstance()
 
-        //  val phoneNo = Intent().getStringArrayExtra("mobileNo")
 
 
+        textView_sendOtp.setOnClickListener {
+
+
+                sendVerificationCodeToUser()
+
+        }
         verify_button.setOnClickListener {
 
+                authenticate()
 
-            sendVerificationCodeToUser()
         }
+    }
+
+    private fun authenticate() {
+        val otp = otp.text.toString()
+
+
+        val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp)
+
+        signInWithPhoneAuthCredential(credential)
+
     }
 
     private fun sendVerificationCodeToUser() {
         verificationCallbacks()
         val phoneNo = mobile.text.toString()
-       // val msg = "Verification working from Akash"
-        Toast.makeText(this, "$phoneNo", Toast.LENGTH_LONG).show()
+
+
+        Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
 
-        "+91$phoneNo", // Phone number to verify
+            "+61$phoneNo", // Phone number to verify
             60, // Timeout duration
             TimeUnit.SECONDS, // Unit of timeout
             MAIN_THREAD, // Activity (for callback binding)
@@ -82,7 +99,7 @@ class PhoneAuth : AppCompatActivity() {
                 //     user action.
                 //Log.d(TAG, "onVerificationCompleted:$credential")
 
-                // signInWithPhoneAuthCredential(credential)
+                signInWithPhoneAuthCredential(credential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -118,6 +135,33 @@ class PhoneAuth : AppCompatActivity() {
                 // ...
             }
         }
+
+    }
+
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    // Log.d(TAG, "signInWithCredential:success")
+
+                    Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, Dashboard::class.java))
+                    //  val user = task.result?.user
+                    // ...
+                } else {
+                    // Sign in failed, display a message and update the UI
+                    //Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                        Toast.makeText(
+                            this,
+                            "verification code entered was invalid",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+
     }
 
 

@@ -69,55 +69,12 @@ else {
 
             db.collection("User").document(mobile).set(user,SetOptions.merge())
 
-            startActivity(Intent(this, PhoneAuth::class.java))
+            intent = Intent(this, PhoneAuth::class.java)
+            intent.putExtra("mobileNo", mobile)
+            startActivity(intent)
 
         }
 
-        /* if (email.isEmpty()) {
-            email_activity_register.error = "Please enter valid email"
-            email_activity_register.requestFocus()
-
-        }
-        if (password.isEmpty()) {
-            password_activity_register.error = "Please enter valid password"
-            password_activity_register.requestFocus()
-        }
-
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("Register", "createUserWithEmail:success")
-
-
-                    //updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("Register", task.exception)
-                    Toast.makeText(
-                        baseContext, "Authentication failed.", Toast.LENGTH_SHORT
-                    ).show()
-                    // updateUI(null)
-                }*/
-
-                // ...
-            //}
-
-        ////saving data to Firebase /////
-
-
-        //val uid = FirebaseAuth.getInstance().uid ?: ""
-       /* val ref = FirebaseDatabase.getInstance().getReference("users")
-      //val user = User(, profession, name, mobile, email, password)
-
-       // ref.setValue(user).addOnSuccessListener {
-            Log.d("RegisterActivity", "Saved user to Database")
-
-        }*/
-
-       /* val intent = Intent(this, PhoneAuth::class.java)
-intent.putExtra("Mobile", mobile)
-        startActivity(intent)*/
 
     }
 

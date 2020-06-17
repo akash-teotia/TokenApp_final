@@ -40,24 +40,31 @@ class PhoneAuth : AppCompatActivity() {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_auth)
-        mobile = findViewById(R.id.verify_mobile_text_activity)
+     //   mobile = findViewById(R.id.verify_mobile_activity)
         otp = findViewById(R.id.verify_otp_activity)
         auth = FirebaseAuth.getInstance()
 
 
-
         textView_sendOtp.setOnClickListener {
 
-
+            if (mobile.text.trim().isNotEmpty()) {
                 sendVerificationCodeToUser()
 
+            } else {
+                Toast.makeText(this, "Enter Valid Mobile Number", Toast.LENGTH_SHORT).show()
+            }
         }
+
         verify_button.setOnClickListener {
-
+            if (otp.text.toString().trim().isNotEmpty()) {
                 authenticate()
+            } else {
+                Toast.makeText(this, "Enter Valid Code", Toast.LENGTH_SHORT).show()
 
+            }
         }
     }
+
 
     private fun authenticate() {
         val otp = otp.text.toString()
@@ -71,10 +78,10 @@ class PhoneAuth : AppCompatActivity() {
 
     private fun sendVerificationCodeToUser() {
         verificationCallbacks()
-        val phoneNo = mobile.text.toString()
+        val phoneNo = mobile
 
 
-        Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
+//        Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
 

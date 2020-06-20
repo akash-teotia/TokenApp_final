@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -26,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var mobile: EditText
     lateinit var email: EditText
     lateinit var password: EditText
-    private lateinit var storedVerificationId: String
 
 
     var db = FirebaseFirestore.getInstance()
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        auth = FirebaseAuth.getInstance()
+
+
+
         profession = findViewById(R.id.profession_activity_register)
         name = findViewById(R.id.name_activity_register)
         mobile = findViewById(R.id.mobile_text_activity_register)
@@ -53,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         button_register.setOnClickListener {
             signUpUser()
         }
+
 
     }
 
@@ -89,9 +95,18 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    override  fun onStart() {
+        super.onStart()
+        if (auth.currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            startActivity(Intent(this, Dashboard::class.java))
 
+        }
+    }
 
 }
+
 data class User(
     val name: String? = null,
     val profession: String? = null,

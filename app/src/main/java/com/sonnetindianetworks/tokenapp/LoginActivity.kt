@@ -127,7 +127,7 @@ login_button.setOnClickListener {
                     // Log.d(TAG, "signInWithCredential:success")
 
                     Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, Dashboard::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     //  val user = task.result?.user
                     // ...
                 } else {

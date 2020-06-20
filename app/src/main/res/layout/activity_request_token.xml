@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg1"
+    android:background="@drawable/ic_bg"
     tools:context=".RequestToken">
 
     <TextView
@@ -128,7 +128,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:background="#00ACC1"
         android:fontFamily="@font/vampiro_one"
         android:text="@string/app_name"
         android:textAlignment="center"

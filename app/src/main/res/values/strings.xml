@@ -14,4 +14,7 @@
     <string name="login">Login</string>
     <string name="otp">OTP</string>
     <string name="verify">Verify</string>
+    <string name="signin">SignIn</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="create_a_new_account">Create a New Account!</string>
 </resources>

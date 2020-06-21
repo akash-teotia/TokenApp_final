@@ -11,9 +11,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
@@ -26,21 +27,20 @@
 
             android:orientation="vertical">
 
-<TextView
-            android:layout_width="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="130dp"
-    android:layout_height="50dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="130dp"
 
-    android:layout_marginEnd="32dp"
-            android:text="Please Enter OTP"
-            android:textAlignment="center"
-            android:textColor="#0097a7"
-            android:textSize="16sp"
-            android:textStyle="bold"
-/>
+                android:layout_marginEnd="32dp"
+                android:text="Please Enter OTP"
+                android:textAlignment="center"
+                android:textColor="#0097a7"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-       <!--     <EditText
+            <!--     <EditText
                 android:id="@+id/verify_mobile_activity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -81,11 +81,11 @@
             <Button
                 android:id="@+id/textView_sendOtp"
                 android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/button_login"
-                android:layout_height="50dp"
 
                 android:text="Send OTP"
                 android:textAlignment="center"
@@ -93,7 +93,6 @@
 
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
 
 
             <Button
@@ -104,9 +103,9 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/button_login"
-                android:textAlignment="center"
-
                 android:text="@string/verify"
+
+                android:textAlignment="center"
                 android:textColor="#0097A7"
                 android:textSize="16sp"
                 android:textStyle="bold" />

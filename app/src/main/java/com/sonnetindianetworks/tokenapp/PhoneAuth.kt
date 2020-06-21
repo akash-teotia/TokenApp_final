@@ -1,15 +1,10 @@
 package com.sonnetindianetworks.tokenapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
-
 import android.widget.Toast
-import androidx.arch.core.executor.TaskExecutor
-import com.google.android.gms.tasks.Task
-import com.google.android.gms.tasks.TaskExecutors
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.TaskExecutors.MAIN_THREAD
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -17,11 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
-import kotlinx.android.synthetic.main.activity_generate_token.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_phone_auth.*
 import java.util.concurrent.TimeUnit
-import kotlin.math.log
 
 class PhoneAuth : AppCompatActivity() {
 
@@ -31,7 +23,7 @@ class PhoneAuth : AppCompatActivity() {
     lateinit var mobile: EditText
     lateinit var otp: EditText
     private lateinit var storedVerificationId: String
-
+    var MOBILE: String? = null
 
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
@@ -40,13 +32,19 @@ class PhoneAuth : AppCompatActivity() {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_auth)
-     //   mobile = findViewById(R.id.verify_mobile_activity)
+        //   mobile = findViewById(R.id.verify_mobile_activity)
         otp = findViewById(R.id.verify_otp_activity)
         auth = FirebaseAuth.getInstance()
 
+        val extras = intent.extras
+        if (extras != null) {
+            MOBILE = extras.getString("MOBILE")
+
+        }
+        MOBILE = mobile.text.toString()
 
         textView_sendOtp.setOnClickListener {
-
+Toast.makeText(this , MOBILE , Toast.LENGTH_LONG).show()
             if (mobile.text.trim().isNotEmpty()) {
                 sendVerificationCodeToUser()
 

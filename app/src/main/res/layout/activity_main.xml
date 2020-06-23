@@ -69,7 +69,6 @@
                 android:padding="10dp"
                 android:textColor="#00ACC1"
                 android:textStyle="bold"
-                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@id/profession_activity_register"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/profession_activity_register"
@@ -143,42 +142,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_activity_register"
                 tools:visibility="visible" />
 
-            <EditText
-                android:id="@+id/otp_RegisterActivity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/rounded_edittext_register"
-                android:ems="10"
-                android:hint="@string/otp"
-                android:inputType="phone"
-                android:padding="10dp"
-                android:textColor="#00ACC1"
-                android:textStyle="bold"
-                android:visibility="visible"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="349dp"
-                tools:visibility="visible" />
-
-            <Button
-                android:id="@+id/send_otp_button_RegisterActivity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-
-
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/button_login"
-                android:text="@string/send_otp"
-                android:textColor="#0097A7"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="431dp" />
-
             <Button
                 android:id="@+id/button_register"
                 android:layout_width="match_parent"
@@ -198,17 +161,18 @@
                 app:layout_constraintStart_toStartOf="@+id/password_activity_register"
                 app:layout_constraintTop_toBottomOf="@+id/password_activity_register" />
 
-            <TextView
+            <Button
                 android:id="@+id/already_have_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
+
+
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_login"
                 android:text="@string/already_have_a_account"
-                android:textAlignment="textEnd"
-                android:textColor="#FFFFFF"
+                android:textColor="#0097A7"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

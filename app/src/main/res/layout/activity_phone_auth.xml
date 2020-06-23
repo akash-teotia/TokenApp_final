@@ -78,22 +78,6 @@
 
                 tools:visibility="visible" />
 
-            <Button
-                android:id="@+id/textView_sendOtp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/button_login"
-
-                android:text="Send OTP"
-                android:textAlignment="center"
-                android:textColor="#0097a7"
-
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
 
             <Button
                 android:id="@+id/verify_button"

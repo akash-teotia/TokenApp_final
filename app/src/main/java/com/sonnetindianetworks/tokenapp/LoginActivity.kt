@@ -25,39 +25,28 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        email = findViewById(R.id.email_LoginActivity)
+        email = findViewById(R.id.email_loginActivity)
         password = findViewById(R.id.password_LoginActivity)
         auth = FirebaseAuth.getInstance()
-
         register_login.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
         login_button.setOnClickListener {
+
             signIn()
+
         }
     }
     private fun signIn(){
-        val email = email.text.toString()
-        val password = password.text.toString()
-        Toast.makeText(baseContext, password,Toast.LENGTH_SHORT).show()
+        val password = password.text.toString().trim()
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(baseContext, "Authentication Successfully",Toast.LENGTH_SHORT).show()
-startActivity(Intent(this, Dashboard::class.java))
-                } else {
-                    // If sign in fails, display a message to the user.
-                   /* Toast.makeText(baseContext, " Email Authentication failed ",
-                        Toast.LENGTH_SHORT).show()*/
-                }
+        val email = email.text.toString().trim()
 
-                // ...
-            }
-        /*auth.signInWithEmailAndPassword(email, password.toString())
+
+
+        auth.signInWithEmailAndPassword(email, password.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
@@ -72,6 +61,6 @@ startActivity(Intent(this, Dashboard::class.java))
                 }
 
                 // ...
-            }*/
+            }
     }
 }

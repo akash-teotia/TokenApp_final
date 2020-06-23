@@ -36,23 +36,20 @@
                 tools:layout_editor_absoluteY="75dp" />
 
             <EditText
-                android:id="@+id/email_LoginActivity"
+                android:id="@+id/email_loginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:background="@drawable/rounded_edittext_register"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColor="#00ACC1"
                 android:textStyle="bold"
                 android:visibility="visible"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="267dp"
-                tools:visibility="visible" />
+                android:hint="Email"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/password_LoginActivity"
@@ -91,19 +88,24 @@
                 tools:layout_editor_absoluteY="431dp" />
 
 
-            <TextView
+            <Button
                 android:id="@+id/register_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:text="@string/create_a_new_account"
+                android:background="@drawable/button_login"
+                android:textColor="#0097A7"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
 
-                android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="112dp"
                 tools:layout_editor_absoluteY="513dp" />
+
+
         </LinearLayout>
     </ScrollView>
 

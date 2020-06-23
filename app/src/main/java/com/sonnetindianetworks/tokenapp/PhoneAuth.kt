@@ -20,11 +20,9 @@ class PhoneAuth : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-    lateinit var mobile: EditText
+    lateinit var mobile: String
     lateinit var otp: EditText
     private lateinit var storedVerificationId: String
-    var MOBILE: String? = null
-
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
 
@@ -36,22 +34,18 @@ class PhoneAuth : AppCompatActivity() {
         otp = findViewById(R.id.verify_otp_activity)
         auth = FirebaseAuth.getInstance()
 
-        val extras = intent.extras
-        if (extras != null) {
-            MOBILE = extras.getString("MOBILE")
 
+          val mobileNo = intent.getStringExtra("key")
+
+ mobile =  mobileNo
+        if (mobile.trim().isNotEmpty()) {
+            sendVerificationCodeToUser()
+
+        } else {
+            Toast.makeText(this, "Enter Valid Mobile Number", Toast.LENGTH_SHORT).show()
         }
-        MOBILE = mobile.text.toString()
 
-        textView_sendOtp.setOnClickListener {
-Toast.makeText(this , MOBILE , Toast.LENGTH_LONG).show()
-            if (mobile.text.trim().isNotEmpty()) {
-                sendVerificationCodeToUser()
-
-            } else {
-                Toast.makeText(this, "Enter Valid Mobile Number", Toast.LENGTH_SHORT).show()
-            }
-        }
+        
 
         verify_button.setOnClickListener {
             if (otp.text.toString().trim().isNotEmpty()) {

@@ -2,16 +2,14 @@ package com.sonnetindianetworks.tokenapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.TaskExecutors.MAIN_THREAD
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.activity_phone_auth.*
 import java.util.concurrent.TimeUnit
 
@@ -20,38 +18,42 @@ class PhoneAuth : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+
     lateinit var mobile: String
     lateinit var otp: EditText
     private lateinit var storedVerificationId: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_auth)
-        //   mobile = findViewById(R.id.verify_mobile_activity)
         otp = findViewById(R.id.verify_otp_activity)
         auth = FirebaseAuth.getInstance()
 
 
-          val mobileNo = intent.getStringExtra("key")
+        val mobileNo = intent.getStringExtra("key")
+        val creEmail = intent.getStringExtra("KeyEmail")
+        val crePassword = intent.getStringExtra("keyPassword")
 
  mobile =  mobileNo
+
+
         if (mobile.trim().isNotEmpty()) {
-            sendVerificationCodeToUser()
+
+              sendVerificationCodeToUser()
 
         } else {
             Toast.makeText(this, "Enter Valid Mobile Number", Toast.LENGTH_SHORT).show()
         }
 
-        
+
 
         verify_button.setOnClickListener {
             if (otp.text.toString().trim().isNotEmpty()) {
                 authenticate()
             } else {
-                Toast.makeText(this, "Enter Valid Code", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this, "Enter Valid Code", Toast.LENGTH_SHORT).show()
 
             }
         }
@@ -64,7 +66,12 @@ class PhoneAuth : AppCompatActivity() {
 
         val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp)
 
+
         signInWithPhoneAuthCredential(credential)
+
+
+
+
 
     }
 
@@ -141,11 +148,16 @@ class PhoneAuth : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+
+
                     // Sign in success, update UI with the signed-in user's information
-                    // Log.d(TAG, "signInWithCredential:success")
+                     Log.d("Phone", "signInWithCredential:success")
 
                     Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, Dashboard::class.java))
+
+
+
+                  startActivity(Intent(this, Dashboard::class.java))
                     //  val user = task.result?.user
                     // ...
                 } else {

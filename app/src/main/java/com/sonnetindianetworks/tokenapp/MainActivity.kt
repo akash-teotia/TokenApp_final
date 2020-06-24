@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
                             .show()*/
                         intent = Intent(this, PhoneAuth::class.java)
                         intent.putExtra("key", mobile_text_activity_register.text.toString())
+
+
                         startActivity(intent)
 
                     } else {

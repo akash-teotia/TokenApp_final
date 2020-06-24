@@ -17,4 +17,5 @@
     <string name="signin">SignIn</string>
     <string name="send_otp">Send OTP</string>
     <string name="create_a_new_account">Create a New Account!</string>
+    <string name="issued_by">Issued By</string>
 </resources>

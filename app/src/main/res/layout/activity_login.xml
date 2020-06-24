@@ -34,8 +34,24 @@
                 tools:ignore="ContentDescription"
                 tools:layout_editor_absoluteX="125dp"
                 tools:layout_editor_absoluteY="75dp" />
-
             <EditText
+                android:id="@+id/mobile_LoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+
+                android:hint="@string/mobile_number"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+/>
+           <!-- <EditText
                 android:id="@+id/email_loginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -49,9 +65,27 @@
                 android:hint="Email"
                 android:background="@drawable/rounded_edittext_register"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
-
+                android:inputType="textEmailAddress" />-->
             <EditText
+                android:id="@+id/verify_otp_LoginActivity"
+
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/rounded_edittext_register"
+                android:ems="10"
+                android:hint="OTP"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#00ACC1"
+                android:textStyle="bold"
+                android:visibility="visible"
+
+                tools:visibility="visible" />
+           <!-- <EditText
                 android:id="@+id/password_LoginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -68,10 +102,10 @@
                 android:visibility="visible"
                 tools:layout_editor_absoluteX="32dp"
                 tools:layout_editor_absoluteY="349dp"
-                tools:visibility="visible" />
+                tools:visibility="visible" />-->
 
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/send_button_LoginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"
@@ -80,15 +114,30 @@
 
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/button_login"
-                android:text="@string/login"
+                android:text="@string/send_otp"
                 android:textColor="#0097A7"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="229dp"
                 tools:layout_editor_absoluteY="431dp" />
 
-
             <Button
+                android:id="@+id/verify_button_LoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_login"
+                android:text="@string/verify"
+                android:textColor="#0097A7"
+
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="513dp" />
+
+            <!--<Button
                 android:id="@+id/register_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -103,7 +152,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="112dp"
-                tools:layout_editor_absoluteY="513dp" />
+                tools:layout_editor_absoluteY="513dp" />-->
 
 
         </LinearLayout>

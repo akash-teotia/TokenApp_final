@@ -13,6 +13,7 @@
 
 
 
+<!--
     <TextView
         android:id="@+id/textView_appName"
         android:layout_width="0dp"
@@ -28,17 +29,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+-->
 
     <TextView
         android:id="@+id/textView_currentToken"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
         android:text="No Token Issued  "
 
-        android:textColor="#00ACC1"
+        android:textColor="@android:color/black"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
 
 
@@ -58,7 +60,7 @@
         android:text="Request Token"
 
 
-        android:textColor="#0097A7"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView_currentToken"
@@ -76,7 +78,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_login"
         android:text="Generate Token"
-        android:textColor="#0097A7"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/button_RequestToken_DashboardActivity"
@@ -84,7 +86,7 @@
         app:layout_constraintStart_toStartOf="@+id/button_RequestToken_DashboardActivity"
         app:layout_constraintTop_toBottomOf="@+id/button_RequestToken_DashboardActivity" />
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/textView_signOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,7 +98,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/button_generate"
         app:layout_constraintStart_toStartOf="@+id/button_generate"
-        app:layout_constraintTop_toBottomOf="@+id/button_generate" />
+        app:layout_constraintTop_toBottomOf="@+id/button_generate" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

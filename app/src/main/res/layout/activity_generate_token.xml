@@ -10,7 +10,7 @@
 
     tools:context=".GenerateToken">
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/textView_appName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -24,9 +24,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/textView_goBack_dash"
 
         android:layout_width="wrap_content"
@@ -41,11 +41,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -68,11 +68,11 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/rounded_edittext_register"
             android:ems="10"
-            android:hint="Token Number"
+            android:hint="@string/token_number"
             android:importantForAutofill="no"
             android:inputType="phone"
             android:padding="10dp"
-            android:textColor="#00ACC1"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             android:visibility="visible"
             />
@@ -90,7 +90,7 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:padding="10dp"
-        android:textColor="#00ACC1"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:visibility="visible"
          />
@@ -104,11 +104,11 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_edittext_register"
-        android:hint="Mobile Number"
+        android:hint="@string/mobile_number"
         android:importantForAutofill="no"
         android:inputType="phone"
         android:padding="10dp"
-        android:textColor="#00ACC1"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:visibility="visible"
          />
@@ -126,7 +126,7 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:padding="10dp"
-        android:textColor="#00ACC1"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,10 +141,10 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/rounded_edittext_register"
-            android:hint="Date"
+            android:hint="@string/date"
             android:inputType="date"
             android:padding="10dp"
-            android:textColor="#00ACC1"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             android:visibility="visible"
             />
@@ -159,8 +159,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_login"
-        android:text="Send Token"
-        android:textColor="#0097A7"
+        android:text="@string/send_token"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         />
@@ -175,8 +175,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_login"
-        android:text="Clear Token"
-        android:textColor="#0097A7"
+        android:text="@string/clear_token"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
          />
@@ -192,8 +192,8 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_login"
-        android:text="Awaiting Request"
-        android:textColor="#0097A7"
+        android:text="@string/awaiting_request"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
          />

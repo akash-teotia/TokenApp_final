@@ -3,6 +3,7 @@ package com.sonnetindianetworks.tokenapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,21 +23,21 @@ class GenerateToken : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_token)
 
-        textView_goBack_dash.setOnClickListener {
-            startActivity(Intent(this, Dashboard::class.java))
-            tokenNoGenerateToken = findViewById(R.id.tokenNo_GenerateTokenActivity)
-            mobileGenerateToken = findViewById(R.id.editText_mobile_GenerateTokenActivity)
-            nameGenerateToken = findViewById(R.id.editText_name_GenerateTokenActivity)
-            dateGenerateToken = findViewById(R.id.date_GenerateTokenActivity)
-            issuedByGenerateToken = findViewById(R.id.editText_issuedBy_GenerateTokenActivity)
+        tokenNoGenerateToken = findViewById(R.id.tokenNo_GenerateTokenActivity)
+        mobileGenerateToken = findViewById(R.id.editText_mobile_GenerateTokenActivity)
+        nameGenerateToken = findViewById(R.id.editText_name_GenerateTokenActivity)
+        dateGenerateToken = findViewById(R.id.date_GenerateTokenActivity)
+        issuedByGenerateToken = findViewById(R.id.editText_issuedBy_GenerateTokenActivity)
 
         button_sendToken_GenerateTokenActivity.setOnClickListener {
             generateToken()
         }
-        }
+
     }
 
     private fun generateToken() {
@@ -53,7 +54,8 @@ class GenerateToken : AppCompatActivity() {
         } else {
             val token = TokenGenerate(tokenNo, issuedBy, mobile, name, date)
 
-            db.collection("UserDetails").document(mobile).collection("IssuedToken").document(issuedBy)
+            db.collection("UserDetails").document(mobile).collection("IssuedToken")
+                .document(issuedBy)
                 .set(token, SetOptions.merge())
 
 
@@ -61,11 +63,18 @@ class GenerateToken : AppCompatActivity() {
 
 
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu , menu)
+        return super.onCreateOptionsMenu(menu)
+
+    }
 }
-data class TokenGenerate(val tokenNo: String? = null ,
-                         val issuedBy: String? = null ,
-                         val mobile: String? = null,
-                         val name: String? = null ,
-                         val date: String? = null
+
+data class TokenGenerate(
+    val tokenNo: String? = null,
+    val issuedBy: String? = null,
+    val mobile: String? = null,
+    val name: String? = null,
+    val date: String? = null
 
 )

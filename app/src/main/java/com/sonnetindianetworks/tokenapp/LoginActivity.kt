@@ -30,6 +30,8 @@ lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         mobile = findViewById(R.id.mobile_LoginActivity)
@@ -159,9 +161,10 @@ class LoginActivity : AppCompatActivity() {
 val db = FirebaseFirestore.getInstance()
                     val uid = FirebaseAuth.getInstance().uid
 val userdetail = UserDetails(mobile.toInt(), uid)
-                    db.collection("UserDetails").document(mobile).set(userdetail, SetOptions.merge())
-
-                    startActivity(Intent(this, Dashboard::class.java))
+                    db.collection("UserDetails").document("+61$mobile").set(userdetail, SetOptions.merge())
+val intent = Intent(this, Dashboard::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                     //  val user = task.result?.user
                     // ...
                 } else {

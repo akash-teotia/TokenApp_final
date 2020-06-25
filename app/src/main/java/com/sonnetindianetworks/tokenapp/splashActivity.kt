@@ -8,16 +8,18 @@ import android.os.Handler
 class splashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
 
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,Dashboard::class.java))
 
             // close this activity
             finish()
-        }, 800)
+        }, 1000)
     }
 }

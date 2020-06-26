@@ -11,7 +11,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,6 +33,7 @@
                 tools:ignore="ContentDescription"
                 tools:layout_editor_absoluteX="125dp"
                 tools:layout_editor_absoluteY="75dp" />
+
             <EditText
                 android:id="@+id/mobile_LoginActivity"
                 android:layout_width="match_parent"
@@ -49,9 +49,8 @@
                 android:inputType="phone"
                 android:padding="10dp"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-/>
-           <!-- <EditText
+                android:textStyle="bold" />
+            <!-- <EditText
                 android:id="@+id/email_loginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -85,7 +84,7 @@
                 android:visibility="visible"
 
                 tools:visibility="visible" />
-           <!-- <EditText
+            <!-- <EditText
                 android:id="@+id/password_LoginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -114,6 +113,7 @@
 
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/button_login"
+
                 android:text="@string/send_otp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"

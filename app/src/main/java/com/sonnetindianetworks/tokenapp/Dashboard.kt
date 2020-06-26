@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 class Dashboard : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
-   private var IssueTokenList: List<DashTokenIssueModal> = ArrayList()
+    private var IssueTokenList: List<DashTokenIssueModal> = ArrayList()
 
     private val adapterIssueToken: AdapterIssueToken = AdapterIssueToken(IssueTokenList)
     var mobile: String = ""
@@ -37,6 +37,8 @@ class Dashboard : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         auth = FirebaseAuth.getInstance()
         val mobileNo = intent.getStringExtra("MOBILE")
+
+
         if (mobileNo == null) {
             Toast.makeText(this, "Null value for mobile", Toast.LENGTH_SHORT).show()
             signOut()
@@ -47,13 +49,13 @@ class Dashboard : AppCompatActivity() {
         }
 
         val adapter = GroupAdapter<GroupieViewHolder>()
-        recyclerView_DashboardActivity.adapter = adapter
+
 
 
         fetchTokens()
 
 
-recyclerView_DashboardActivity.layoutManager = LinearLayoutManager(this)
+        recyclerView_DashboardActivity.layoutManager = LinearLayoutManager(this)
         recyclerView_DashboardActivity.adapter = adapterIssueToken
 
 
@@ -72,43 +74,20 @@ recyclerView_DashboardActivity.layoutManager = LinearLayoutManager(this)
     }
 
     private fun fetchTokens() {
-        /*val db = FirebaseFirestore.getInstance()
-        val fireStoreTokens =
-            db.collection("UserDetails").document("+61$mobile").collection("IssuedToken")
-        fireStoreTokens.get()
-            .addOnSuccessListener { result ->
-                val adapter = GroupAdapter<GroupieViewHolder>()
-                recyclerView_DashboardActivity.adapter = adapter
 
-                for (document in result) {
-                    Log.d("token", "${document.id} => ${document.data}")
-                    val tokens = result!!.toObjects(DashTokenIssueModal::class.java)
-                    if (tokens != null) {
-                        adapter.add(IssuedTokens())
-                    }
-                    Log.d("re", tokens.toString())
-
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("token", "Error getting documents: ", exception)
-            }
-
-
-    }*/
         val db = FirebaseFirestore.getInstance()
         val fireStoreTokens =
             db.collection("UserDetails").document("+61$mobile").collection("IssuedToken")
-        fireStoreTokens.addSnapshotListener{ snap ,e ->
+        fireStoreTokens.addSnapshotListener { snap, e ->
             if (e != null) {
                 Log.w("token", "Listen failed.", e)
                 return@addSnapshotListener
             }
-            if (snap != null ) {
+            if (snap != null) {
 //                Log.d("token", "Current data: ${snap.documents}")
 
-                for (documents in snap){
-                   IssueTokenList = snap.toObjects(DashTokenIssueModal::class.java)
+                for (documents in snap) {
+                    IssueTokenList = snap.toObjects(DashTokenIssueModal::class.java)
 
                     adapterIssueToken.IssuedTokens = IssueTokenList
                     adapterIssueToken.notifyDataSetChanged()
@@ -117,14 +96,11 @@ recyclerView_DashboardActivity.layoutManager = LinearLayoutManager(this)
                 }
 
 
-            }
-                else {
+            } else {
                 Log.d("token", "Current data: null")
             }
 
         }
-
-
 
 
     }

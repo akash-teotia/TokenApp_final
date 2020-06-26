@@ -1,6 +1,8 @@
 package com.sonnetindianetworks.tokenapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.concurrent.TimeUnit
+import java.util.prefs.Preferences
 
 
 lateinit var auth: FirebaseAuth
@@ -81,6 +84,8 @@ class LoginActivity : AppCompatActivity() {
         verificationCallbacks()
 
         val phoneNo = mobile.text.toString()
+
+
 
 
         Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
@@ -183,6 +188,8 @@ val intent = Intent(this, Dashboard::class.java)
             }
 
     }
+
+
 
 }
 data class UserDetails(

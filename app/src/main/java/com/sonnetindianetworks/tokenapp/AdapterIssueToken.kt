@@ -8,19 +8,13 @@ import kotlinx.android.synthetic.main.recycleview_dashboard.view.*
 
 class AdapterIssueToken(var IssuedTokens: List<DashTokenIssueModal>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    class DeskView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(issueTokens: DashTokenIssueModal) {
-            itemView.recycleView_DashBoard_tokenNo.text = DashTokenIssueModal().tokenNo
-itemView.recycleView_DashBoard_issuedBy!!.text = DashTokenIssueModal().issuedBy
-            itemView.recycleView_DashBoard_date.text = DashTokenIssueModal().date
-        }
-    }
-
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycleview_dashboard, parent, false)
-        return DeskView(view)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycleview_dashboard, parent, false) as View
+        return MyViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
@@ -29,6 +23,11 @@ itemView.recycleView_DashBoard_issuedBy!!.text = DashTokenIssueModal().issuedBy
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as DeskView).bind(IssuedTokens[position])
+
+        holder.itemView.recycleView_DashBoard_tokenNo.text = (IssuedTokens[position]).tokenNo
+        holder.itemView.recycleView_DashBoard_issuedBy!!.text = (IssuedTokens[position]).issuedBy
+        holder.itemView.recycleView_DashBoard_date.text = (IssuedTokens[position]).date
+
+        // (holder as DeskViewHolder).bind(IssuedTokens[position])
     }
 }

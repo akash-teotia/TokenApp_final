@@ -163,6 +163,8 @@ val db = FirebaseFirestore.getInstance()
 val userdetail = UserDetails(mobile.toInt(), uid)
                     db.collection("UserDetails").document("+61$mobile").set(userdetail, SetOptions.merge())
 val intent = Intent(this, Dashboard::class.java)
+                    intent.putExtra("MOBILE", mobile_LoginActivity.text.toString())
+
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     //  val user = task.result?.user

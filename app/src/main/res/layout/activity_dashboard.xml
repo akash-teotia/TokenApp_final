@@ -24,48 +24,32 @@
         android:fontFamily="@font/vampiro_one"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 -->
 
-    <TextView
-        android:id="@+id/textView_currentToken"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
-        android:text="No Token Issued  "
-
-        android:textColor="@android:color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button_RequestToken_DashboardActivity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+
+
         android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
+
+
         android:layout_marginEnd="32dp"
-
-
         android:background="@drawable/button_login"
         android:text="Request Token"
-
-
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView_currentToken"
-        app:layout_constraintStart_toStartOf="@+id/textView_currentToken"
-        app:layout_constraintTop_toBottomOf="@+id/textView_currentToken" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView_DashboardActivity"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_DashboardActivity" />
 
     <Button
         android:id="@+id/button_generate"
@@ -74,7 +58,7 @@
 
 
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_login"
         android:text="Generate Token"
@@ -86,19 +70,28 @@
         app:layout_constraintStart_toStartOf="@+id/button_RequestToken_DashboardActivity"
         app:layout_constraintTop_toBottomOf="@+id/button_RequestToken_DashboardActivity" />
 
-   <!-- <TextView
-        android:id="@+id/textView_signOut"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_DashboardActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Sign Out"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:textColor="#00ACC1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/button_generate"
-        app:layout_constraintStart_toStartOf="@+id/button_generate"
-        app:layout_constraintTop_toBottomOf="@+id/button_generate" />-->
+    <!-- <TextView
+         android:id="@+id/textView_signOut"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="32dp"
+         android:text="Sign Out"
+
+         android:textColor="#00ACC1"
+         android:textSize="18sp"
+         android:textStyle="bold"
+         app:layout_constraintEnd_toEndOf="@+id/button_generate"
+         app:layout_constraintStart_toStartOf="@+id/button_generate"
+         app:layout_constraintTop_toBottomOf="@+id/button_generate" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

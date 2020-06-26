@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.EmailAuthProvider
@@ -23,7 +25,9 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 class Dashboard : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
-    //private var IssueTokenList: List<DashTokenIssueModal> = ArrayList()
+   private var IssueTokenList: List<DashTokenIssueModal> = ArrayList()
+
+    private val adapterIssueToken: AdapterIssueToken = AdapterIssueToken(IssueTokenList)
     var mobile: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +39,7 @@ class Dashboard : AppCompatActivity() {
         val mobileNo = intent.getStringExtra("MOBILE")
         if (mobileNo == null) {
             Toast.makeText(this, "Null value for mobile", Toast.LENGTH_SHORT).show()
+            signOut()
 
         } else {
             mobile = mobileNo
@@ -48,7 +53,8 @@ class Dashboard : AppCompatActivity() {
         fetchTokens()
 
 
-
+recyclerView_DashboardActivity.layoutManager = LinearLayoutManager(this)
+        recyclerView_DashboardActivity.adapter = adapterIssueToken
 
 
 
@@ -98,11 +104,20 @@ class Dashboard : AppCompatActivity() {
                 Log.w("token", "Listen failed.", e)
                 return@addSnapshotListener
             }
-            if (snap != null && snap.exists) {
+            if (snap != null ) {
+//                Log.d("token", "Current data: ${snap.documents}")
+
+                for (documents in snap){
+                   IssueTokenList = snap.toObjects(DashTokenIssueModal::class.java)
+
+                    adapterIssueToken.IssuedTokens = IssueTokenList
+                    adapterIssueToken.notifyDataSetChanged()
+                    Log.d("token", "Current data: $IssueTokenList")
+
+                }
+
 
             }
-
-
                 else {
                 Log.d("token", "Current data: null")
             }
@@ -158,6 +173,7 @@ class Dashboard : AppCompatActivity() {
 
 }
 
+/*
 class IssuedTokens() : Item<GroupieViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.recycleview_dashboard
@@ -168,13 +184,6 @@ class IssuedTokens() : Item<GroupieViewHolder>() {
     }
 
 }
+*/
 
 
-data class DashTokenIssueModal(
-    val tokenNo: String,
-    val issuedBy: String,
-    val date: String
-) {
-constructor(): this("", "" , "")
-
-}

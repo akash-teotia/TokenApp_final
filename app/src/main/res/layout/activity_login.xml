@@ -34,13 +34,36 @@
                 tools:layout_editor_absoluteX="125dp"
                 tools:layout_editor_absoluteY="75dp" />
 
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+
+            android:orientation="horizontal">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+
+app:ccp_textGravity="LEFT"
+
+                app:ccp_showPhoneCode="false"
+                app:ccp_defaultNameCode="IN"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_textSize="16sp"
+
+                />
+
             <EditText
                 android:id="@+id/mobile_LoginActivity"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_weight="2"
                 android:background="@drawable/rounded_edittext_register"
                 android:ems="10"
 
@@ -50,11 +73,11 @@
                 android:padding="10dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
+        </LinearLayout>
             <!-- <EditText
                 android:id="@+id/email_loginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:padding="10dp"

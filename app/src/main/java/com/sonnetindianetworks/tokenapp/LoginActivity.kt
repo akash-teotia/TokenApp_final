@@ -18,6 +18,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.hbb20.CountryCodePicker
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.concurrent.TimeUnit
 import java.util.prefs.Preferences
@@ -27,6 +28,8 @@ lateinit var auth: FirebaseAuth
 lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 lateinit var mobile: EditText
 lateinit var otp: EditText
+lateinit var mobileNo: String
+
 private lateinit var storedVerificationId: String
 lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
@@ -40,7 +43,8 @@ class LoginActivity : AppCompatActivity() {
         mobile = findViewById(R.id.mobile_LoginActivity)
         otp = findViewById(R.id.verify_otp_LoginActivity)
         auth = FirebaseAuth.getInstance()
-       /* register_login.setOnClickListener {
+
+        /* register_login.setOnClickListener {
             sendVerificationCodeToUser()
 
             val intent = Intent(this, MainActivity::class.java)
@@ -69,6 +73,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     private fun authenticate() {
         val otp = otp.text.toString()
 
@@ -81,18 +88,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun sendVerificationCodeToUser() {
+
+        val ccp: CountryCodePicker = findViewById(R.id.ccp)
+
+
         verificationCallbacks()
 
-        val phoneNo = mobile.text.toString()
+        val phoneNo = "+" + ccp.fullNumber +  mobile.text.toString()
 
-
+mobileNo = phoneNo
 
 
         Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
 
-            "+61$phoneNo", // Phone number to verify
+            phoneNo, // Phone number to verify
             60, // Timeout duration
             TimeUnit.SECONDS, // Unit of timeout
             TaskExecutors.MAIN_THREAD, // Activity (for callback binding)
@@ -163,12 +174,13 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
                     val mobile = mobile.text.toString()
+
 val db = FirebaseFirestore.getInstance()
                     val uid = FirebaseAuth.getInstance().uid
-val userdetail = UserDetails(mobile.toInt(), uid)
-                    db.collection("UserDetails").document("+61$mobile").set(userdetail, SetOptions.merge())
+val userdetail = UserDetails(mobileNo, uid)
+                    db.collection("UserDetails").document(mobileNo).set(userdetail, SetOptions.merge())
 val intent = Intent(this, Dashboard::class.java)
-                    intent.putExtra("MOBILE", mobile_LoginActivity.text.toString())
+                    intent.putExtra("MOBILE", mobileNo)
 
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
@@ -193,6 +205,6 @@ val intent = Intent(this, Dashboard::class.java)
 
 }
 data class UserDetails(
-    val mobile: Int? = null,
+    val mobile: String? = null,
 val uid: String? = null
     )

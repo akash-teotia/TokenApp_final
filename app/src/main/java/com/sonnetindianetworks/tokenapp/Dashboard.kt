@@ -45,7 +45,7 @@ class Dashboard : AppCompatActivity() {
 
         } else {
             mobile = mobileNo
-            Toast.makeText(this, "+61$mobile", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show()
         }
 
         val adapter = GroupAdapter<GroupieViewHolder>()
@@ -74,10 +74,10 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun fetchTokens() {
-
+val dataMobile = mobile
         val db = FirebaseFirestore.getInstance()
         val fireStoreTokens =
-            db.collection("UserDetails").document("+61$mobile").collection("IssuedToken")
+            db.collection("UserDetails").document(dataMobile).collection("IssuedToken")
         fireStoreTokens.addSnapshotListener { snap, e ->
             if (e != null) {
                 Log.w("token", "Listen failed.", e)
@@ -124,7 +124,6 @@ class Dashboard : AppCompatActivity() {
                 signOut()
             }
 
-
         }
 
 
@@ -149,17 +148,6 @@ class Dashboard : AppCompatActivity() {
 
 }
 
-/*
-class IssuedTokens() : Item<GroupieViewHolder>() {
-    override fun getLayout(): Int {
-        return R.layout.recycleview_dashboard
-    }
 
-    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-
-    }
-
-}
-*/
 
 

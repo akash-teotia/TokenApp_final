@@ -48,7 +48,7 @@ class Dashboard : AppCompatActivity() {
             Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show()
         }
 
-        val adapter = GroupAdapter<GroupieViewHolder>()
+
 
 
 
@@ -74,10 +74,16 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun fetchTokens() {
-val dataMobile = mobile
+        val dataMobile = mobile
+        if (dataMobile.isEmpty()){
+            return signOut()
+        }
+        
         val db = FirebaseFirestore.getInstance()
-        val fireStoreTokens =
-            db.collection("UserDetails").document(dataMobile).collection("IssuedToken")
+        val fireStoreTokens =  db.collection("UserDetails").document(dataMobile).collection("IssuedToken")
+
+
+
         fireStoreTokens.addSnapshotListener { snap, e ->
             if (e != null) {
                 Log.w("token", "Listen failed.", e)
@@ -86,7 +92,7 @@ val dataMobile = mobile
             if (snap != null) {
 //                Log.d("token", "Current data: ${snap.documents}")
 
-                for (documents in snap) {
+                for ( doc in snap) {
                     IssueTokenList = snap.toObjects(DashTokenIssueModal::class.java)
 
                     adapterIssueToken.IssuedTokens = IssueTokenList

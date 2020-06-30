@@ -8,8 +8,10 @@ import android.os.Handler
 class splashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
 
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        if (supportActionBar != null)
+            supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({

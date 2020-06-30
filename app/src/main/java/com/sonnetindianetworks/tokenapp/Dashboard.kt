@@ -1,6 +1,8 @@
 package com.sonnetindianetworks.tokenapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,31 +28,20 @@ class Dashboard : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
     private var IssueTokenList: List<DashTokenIssueModal> = ArrayList()
-
+    lateinit var sharedprefs: SharedPreferences
     private val adapterIssueToken: AdapterIssueToken = AdapterIssueToken(IssueTokenList)
     var mobile: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
 
+        sharedprefs = getSharedPreferences("MOBILE" , Context.MODE_PRIVATE)
+        mobile = sharedprefs.getString("MOBILE" , "").toString()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         auth = FirebaseAuth.getInstance()
-        val mobileNo = intent.getStringExtra("MOBILE")
-
-
-        if (mobileNo == null) {
-            Toast.makeText(this, "Null value for mobile", Toast.LENGTH_SHORT).show()
-            signOut()
-
-        } else {
-            mobile = mobileNo
-            Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show()
-        }
-
-
-
-
+       val mobileVal: String = mobile
+        if (mobileVal.isEmpty() ) return signOut()
 
         fetchTokens()
 

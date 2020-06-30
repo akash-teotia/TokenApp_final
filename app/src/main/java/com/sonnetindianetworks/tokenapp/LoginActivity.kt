@@ -29,7 +29,7 @@ lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 lateinit var mobile: EditText
 lateinit var otp: EditText
 lateinit var mobileNo: String
-
+lateinit var sharedprefs: SharedPreferences
 private lateinit var storedVerificationId: String
 lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
@@ -74,16 +74,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun authenticate() {
         val otp = otp.text.toString()
 
+if (::storedVerificationId.isInitialized ) {
+    val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp)
+    signInWithPhoneAuthCredential(credential)
 
-        val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp)
+} else  {
+    Toast.makeText(this, "Please Send OTP", Toast.LENGTH_SHORT).show()
 
 
-        signInWithPhoneAuthCredential(credential)
+}
+
 
     }
 
@@ -94,9 +97,9 @@ class LoginActivity : AppCompatActivity() {
 
         verificationCallbacks()
 
-        val phoneNo = "+" + ccp.fullNumber +  mobile.text.toString()
+        val phoneNo = "+" + ccp.fullNumber + mobile.text.toString()
 
-mobileNo = phoneNo
+        mobileNo = phoneNo
 
 
         Toast.makeText(this, phoneNo, Toast.LENGTH_LONG).show()
@@ -110,6 +113,9 @@ mobileNo = phoneNo
             callbacks
         ) // OnVerificationStateChangedCallbacks
 
+
+        sharedprefs = getSharedPreferences("MOBILE" , Context.MODE_PRIVATE)
+        sharedprefs.edit().putString("MOBILE", phoneNo).apply()
     }
 
     private fun verificationCallbacks() {
@@ -175,11 +181,12 @@ mobileNo = phoneNo
                     Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
                     val mobile = mobile.text.toString()
 
-val db = FirebaseFirestore.getInstance()
+                    val db = FirebaseFirestore.getInstance()
                     val uid = FirebaseAuth.getInstance().uid
-val userdetail = UserDetails(mobileNo, uid)
-                    db.collection("UserDetails").document(mobileNo).set(userdetail, SetOptions.merge())
-val intent = Intent(this, Dashboard::class.java)
+                    val userdetail = UserDetails(mobileNo, uid)
+                    db.collection("UserDetails").document(mobileNo)
+                        .set(userdetail, SetOptions.merge())
+                    val intent = Intent(this, Dashboard::class.java)
                     intent.putExtra("MOBILE", mobileNo)
 
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -202,9 +209,9 @@ val intent = Intent(this, Dashboard::class.java)
     }
 
 
-
 }
+
 data class UserDetails(
     val mobile: String? = null,
-val uid: String? = null
-    )
+    val uid: String? = null
+)

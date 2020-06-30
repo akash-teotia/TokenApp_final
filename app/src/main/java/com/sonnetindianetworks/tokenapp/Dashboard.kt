@@ -8,9 +8,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Task
@@ -31,7 +34,7 @@ class Dashboard : AppCompatActivity() {
     lateinit var sharedprefs: SharedPreferences
     private val adapterIssueToken: AdapterIssueToken = AdapterIssueToken(IssueTokenList)
     var mobile: String = ""
-
+lateinit var dashImg: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
 
@@ -39,6 +42,7 @@ class Dashboard : AppCompatActivity() {
         mobile = sharedprefs.getString("MOBILE" , "").toString()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+        dashImg = findViewById(R.id.imageView_dash)
         auth = FirebaseAuth.getInstance()
        val mobileVal: String = mobile
         if (mobileVal.isEmpty() ) return signOut()
@@ -50,7 +54,11 @@ class Dashboard : AppCompatActivity() {
         recyclerView_DashboardActivity.adapter = adapterIssueToken
 
 
+        when (IssueTokenList.isEmpty()){
 
+
+
+        }
 
 
         button_generate.setOnClickListener {
